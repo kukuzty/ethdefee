@@ -45,29 +45,30 @@ nohup ./web &
 然后新建转发和抽水就可以了
 
 ----------------------------------------
-# 注意 
-# 添加程序的开机启动项，最后一步视频教程里没讲但非常重要
->不会添加的联系 https://t.me/nndnra1 技术支持没有服务费
+不会添加的联系 https://t.me/nndnra1 技术支持没有服务费
 
->默认程序在服务器系统重启后，是没有跟随系统启动的，按步骤执行如下命令
+默认程序在服务器系统重启后，是没有跟随系统启动的，按步骤执行如下命令
 
->     apt install supervisor -y
->     cd /etc/supervisor/conf.d/ 
->     nano ethdefee.conf
+apt install supervisor -y
+cd /etc/supervisor/conf.d/ 
+nano ethdefee.conf
+以下内容须要一行一行复制，复制一行就打回车，最终格式须要和下面显示的一样，不要弄成一排。
 
-复制以下内容
->     [program:ethdefee]
->     command=nohup ./web &
->     directory=/root/ethdefee
->     autostart=true
->     autorestart=true
->     user=root
+[program:ethdefee]
+directory=/root/ethdefee
+command=nohup ./web &
+autostart=true
+autorestart=true
+user=root
 粘贴后
->     ctrl+字母o  保存
->      按下回车键
->     ctrl+字母x  退出
+
+ctrl+字母o  保存
+ 按下回车键
+ctrl+字母x  退出
 命令行执行
->     supervisorctl reload  
+
+supervisorctl reload  
+执行完命令以后如何查看有没有添加成功 重启服务器命令 shutdown -r now 第一次安装程序的建议重启查看，如果服务器有连接有大量矿机的不建议重启， 连接服务器后执行 ps -ef | grep web 如果有./web & 则表示开机启动已经添加成功 打开网页后台查看即可
 -----------------------------------------
 强烈建议新手朋友使用windows版本
 -----------------------------------------
